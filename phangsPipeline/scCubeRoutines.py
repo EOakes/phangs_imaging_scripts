@@ -714,7 +714,7 @@ def trim_cube(
         )
         i_min = np.max([0, np.min(np.where(mask_spec_i)) - pad])
         i_max = np.min([np.max(np.where(mask_spec_i)) + pad, mask.shape[ax] - 1])
-        axis_slices.append(slice(i_min, i_max))
+        axis_slices.append(slice(i_min, i_max + 1))
 
     # Slice down the cube
     cube = cube[*axis_slices]

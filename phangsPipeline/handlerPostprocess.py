@@ -1113,6 +1113,23 @@ if casa_enabled:
                     os.system('rm -rf %s' % new_file_name)
                     os.system(command)
 
+                # Rename the image_slice mosaic files
+                slice_file = outdir + item + "_slice.txt"
+                if os.path.exists(slice_file):
+                    new_slice_file = outdir + fname_dict_out[key] + "_slice.txt"
+                    os.system('rm -f %s' % new_slice_file)
+                    os.system('mv -f %s %s' % (slice_file, new_slice_file))
+
+            # Rename the linear mosaic template headers
+            for template_suffix in ["flux", "weight", "mask"]:
+                template_in = outdir + "%s_%s_%s_linmos_template_%s.txt" % (
+                    target, config, product, template_suffix)
+                template_out = outdir + "%s_%s_%s_linmos_template_%s.txt" % (
+                    target, feather_config, product, template_suffix)
+                if os.path.exists(template_in):
+                    os.system('rm -f %s' % template_out)
+                    os.system('mv -f %s %s' % (template_in, template_out))
+
             return
 
         def task_compress(
