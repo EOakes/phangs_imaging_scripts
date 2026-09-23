@@ -2168,7 +2168,7 @@ if casa_enabled:
                 in_tags=in_tag_list,
                 out_tags=out_tag_list,
                 extra_ext_in=extra_ext_in,
-                extra_ext_out=extra_ext_in,
+                extra_ext_out=extra_ext_out,
                 check_files=check_files,
             )
 
